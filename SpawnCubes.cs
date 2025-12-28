@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnSpheres : MonoBehaviour
+public class SpawnCubes : MonoBehaviour
 {
     [SerializeField]
     private float easingScale = 10;
@@ -33,7 +33,8 @@ public class SpawnSpheres : MonoBehaviour
         spacingY = boxPrefab.transform.localScale.y + gapY;
         CreateGridOfBoxes(true);
         //CreateGridOfBoxes(false);
-        //offset parent
+
+        //offset our parent to be visible in game. 
         spawnSphere.transform.position = new Vector3(-10, -20, 20);
 
     }
@@ -62,12 +63,20 @@ public class SpawnSpheres : MonoBehaviour
         return val;
         
     }
+    //==ON YOUR OWN==
+    //go to https://easings.net and see the various functions that are avaiable
+    //can you copy the easing function into your own game???
+    //note: the math function is at the bottom of the page of the function you select
+    //note: make sure the function's parameter is only x
+    //note: you may have to change the easingScale if changes are too drastic or not visible. 
+
     float ApplyEaseFunction(float x)
     {
         //if 1 end of ease
         //if 0 begin ease
         return x < 0.5 ? 16 * x * x * x * x * x : 1 - Mathf.Pow(-2 * x + 2, 5) / 2;
     }
+
     void CreateGridOfBoxes(bool reflection)
     {
         for (int y = 0; y < height; y++)

@@ -12,12 +12,17 @@ public class RotationLearnPosition : MonoBehaviour
     float x = 0;
     public void Update()
     {
-        //part 1
+        //#1 this should look familiar.
         y += rotSpeed * Time.deltaTime;
+        //#2 because eulerAngles have a range of 0,360 if the angle is > 360, we'll simply set it to zero
         y = (y > 360) ? 0 : y;
-        //part 2
-        x += rotSpeed * Time.deltaTime * 2; //x will run twice as hard
+
+
+
+        //still inside update
+        x += rotSpeed * Time.deltaTime * 2; //#3 x will rotate twice as hard.
         x = (x > 360) ? 0 : x;
-        transform.eulerAngles = new Vector3(x, y, 0);
+
+        transform.eulerAngles = new Vector3(x, y, 0); //eulerAngles changes the rotation.
     }
 }
